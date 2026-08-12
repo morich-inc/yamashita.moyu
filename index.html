@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山下百優 様｜HRテクノロジーズ キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-light: #eff6ff;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--primary); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--primary); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--primary); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--primary); color: var(--primary); background: var(--primary-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--primary-light); border: 2px solid var(--primary); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--primary); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #1e3a8a; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--primary); border-left: 3px solid var(--primary); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--primary); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--primary); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--primary); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--primary); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="HRtech.png" alt="HRテクノロジーズ">
+  <div class="htxt">
+    <p>HRテクノロジーズ キャリアご提案資料</p>
+    <p>山下百優 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. ウェルスナビ株式会社</a>
+  <a href="#k2">2. マネーフォワードプライベートバンク株式会社</a>
+  <a href="#k3">3. 株式会社ログラス</a>
+</nav>
+<main>
+
+<!-- 1. ウェルスナビ株式会社 -->
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">人事企画スペシャリスト</span><span class="badge badge-blue">三菱UFJ銀行グループ（完全子会社）</span></div>
+  <div class="co-name">ウェルスナビ株式会社</div>
+  <div class="co-url"><a href="https://corp.wealthnavi.com/" target="_blank">https://corp.wealthnavi.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都品川区西五反田8-4-13 五反田JPビルディング 9F</td></tr><tr><th>上場区分</th><td>未上場（当面予定なし / 2025年3月より三菱UFJ銀行の完全子会社）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ HRテクノロジーズオススメPoint</h3>
+    <ul>
+      <li>★役員リレーションあり（取締役COO須藤様はHRテクノロジーズ経由でご入社）</li>
+      <li>★過去複数名の入社実績あり</li>
+      <li>★国内No.1ロボアドバイザーとして成長し、メガバンク基盤と融合した次世代金融インフラ推進フェーズ</li>
+      <li>★情報透明性が高く、10時始業・子育て支援に手厚いワークライフバランス環境</li>
+    </ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「働く世代に豊かさを」をミッションに掲げ、国内No.1ロボアドバイザー「ウェルスナビ」を展開。三菱UFJ銀行とのグループインにより金融×テクノロジーの融合を拡大中。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body">
+      <p>「なぜ、同じ家族なのに資産に10倍もの差があるのか」——この問いを出発点に、財務省・マッキンゼーを経てウォール街で10兆円規模の機関投資家向け資産運用システムを構築した柴山和久氏が2015年4月に創業。富裕層向けだった世界水準の資産運用を、テクノロジーの力で誰もが使えるサービスへ変えることを目指しています。</p>
+      <p>サービスリリースからわずか10年で、預かり資産は2兆円、運用者数は50万人を突破。国内ロボアドバイザー市場で預かり資産・運用者数ともにNo.1を確立し、オリコン顧客満足度調査では5年連続1位を獲得。2025年3月には三菱UFJ銀行の完全子会社となり、さらに三菱UFJ eスマート証券との経営統合（2027年度中）を発表。メガバンクの巨大な顧客基盤と融合し、次世代デジタル金融インフラの中核を担っています。</p>
+      <p>エンジニア・デザイナーが従業員の約半数を占める「ものづくりする金融機関」として、全社進捗報告会やシャッフルランチなど透明性の高い組織を運営。資産運用に加え、生命保険・年金・総合アドバイザリープラットフォーム「MAP」への領域拡大も推進しています。</p>
+      <p><strong>【代表取締役CEO 柴山 和久氏】</strong><br>1977年生まれ。東京大学法学部卒業後、大蔵省（現財務省）に入省。ハーバード・ロースクール、INSEADでMBAを取得しニューヨーク州弁護士資格も保有。日英財務省で9年間金融・国際交渉等に従事した後、マッキンゼーでウォール街の機関投資家資産運用をサポート。2015年にウェルスナビを創業。著書に『元財務官僚が5つの失敗をしてたどり着いた これからの投資の思考法』がある。</p>
+    </div>
+  </div>
+  
+  <div class="job-wrap">
+    <div class="job-header" onclick="toggleJob(this)">
+      <div>
+        <div class="job-title-text">📋 人事企画スペシャリスト</div>
+        <div class="job-preview">急成長・組織拡大に伴い、人事制度の企画・設計・運用改善から「伝え・根づかせる」プロセスまでを専門家として主導。</div>
+      </div>
+      <div class="job-icon">▼</div>
+    </div>
+    <div class="job-body">
+      <p><strong>【募集背景・役割】</strong><br>既存事業の成長ならびに新規事業（MAP等）の創出、三菱UFJ銀行グループインに伴う組織規模の急拡大に合わせ、経営・現場双方の視点から人事制度を継続的に進化させることが求められています。制度の設計にとどまらず、その背景や意図を言語化して社内に浸透させ、組織に「根づかせる」プロセスまでを専門家としてリードいただけるスペシャリストを募集します。</p>
+      
+      <p><strong>【業務詳細】</strong></p>
+      <ul>
+        <li>各種人事制度の企画・運用改善（評価制度、等級・報酬制度、組織開発施策、勤務制度等）</li>
+        <li>制度の背景・狙い・運用方針を整理した説明資料やガイドラインの企画・作成および社内発信</li>
+        <li>制度運用における課題抽出と改善施策の立案・推進</li>
+        <li>人事企画領域におけるプロジェクトマネジメント（進捗管理、論点整理、関係者調整）</li>
+        <li>労務業務に関する実務支援、複雑な労務事案や個別案件における制度解釈・対応方針策定</li>
+        <li>法改正に伴う就業規則・諸規程の改定および運用フローへの落とし込み</li>
+      </ul>
+      
+      <p><strong>【応募資格】</strong></p>
+      <ul>
+        <li><span class="tag tag-must">MUST</span> 事業会社における人事制度企画・設計・運用の実務経験（目安3年以上）</li>
+        <li><span class="tag tag-must">MUST</span> 人事制度に関する専門知識を活かし、関係部署を巻き込みながら推進した経験</li>
+        <li><span class="tag tag-must">MUST</span> 従業員・管理職への説明、合意形成、運用定着を主体的に行った経験</li>
+        <li><span class="tag tag-must">MUST</span> 労働関連法令に関する実務レベルの理解、就業規則・人事規程の運用知識</li>
+        <li><span class="tag tag-want">WANT</span> 人事制度の新規企画・大幅改定を主導した経験</li>
+        <li><span class="tag tag-want">WANT</span> 経営層への提案資料作成や根拠データを用いた制度提案、人事データ分析経験</li>
+        <li><span class="tag tag-want">WANT</span> 労務対応における実務経験およびスキーム構築経験</li>
+      </ul>
+      
+      <p><strong>【求める人物像】</strong></p>
+      <ul>
+        <li>ミッション・ビジョン・バリューに共感し、誠実に人事の仕事に向き合える方</li>
+        <li>専門家として知見を還元し、周囲を巻き込みながら成果を出せる方</li>
+        <li>不確実な状況や難易度の高い課題に対しても粘り強く改善を積み重ねられる方</li>
+        <li>制度を「つくる」だけでなく、「伝え」「根づかせる」ことにやりがいを感じられる方</li>
+      </ul>
+      <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">⚠️ 副業：条件によって可</span></div>
+    </div>
+  </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links">
+    <a class="lbtn" href="https://corp.wealthnavi.com/" target="_blank">🏢 企業サイト</a>
+    <a class="lbtn lbtn-out" href="https://www.docswell.com/s/wealthnavi/ZP96X4-company_introduction" target="_blank">📄 会社紹介資料</a>
+    <a class="lbtn lbtn-out" href="https://note.com/wealthnavi_hr/n/nf21c3b4f5d1f" target="_blank">📝 3分でわかるウェルスナビ (note)</a>
+    <a class="lbtn lbtn-out" href="https://note.com/wealthnavi_hr/n/n9ca1264af7e5" target="_blank">📝 社員の声で読み解くらしさ (note)</a>
+  </div>
+</div></div>
+
+<!-- 2. マネーフォワードプライベートバンク株式会社 -->
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">事業開発（アライアンス）</span><span class="badge badge-blue">未上場（2030年IPO目標）</span></div>
+  <div class="co-name">マネーフォワードプライベートバンク株式会社</div>
+  <div class="co-url"><a href="https://moneyforwardprivatebank.com/" target="_blank">https://moneyforwardprivatebank.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区赤坂9-7-2 ミッドタウン・イースト 4F</td></tr><tr><th>設立</th><td>2024年2月</td></tr><tr><th>上場区分</th><td>未上場（N-4以前 / 2030年IPO目標）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ HRテクノロジーズオススメPoint</h3>
+    <ul>
+      <li>★超富裕層向けマルチファミリーオフィスをITで民主化する国内屈指のブルーオーシャン領域</li>
+      <li>★東証プライム上場マネーフォワード×PrivateBANKの合弁による安定感とスタートアップの圧倒的裁量</li>
+      <li>★2030年上場を見据えた創業期参画であり、ストックオプション等のリターンも期待できる好タイミング</li>
+      <li>★不動産、アート、事業承継など超富裕層の人生に伴走する代替不可能なキャリア資産の獲得</li>
+    </ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「マネーフォワード」と超富裕層向けファミリーオフィスを手掛ける「PrivateBANK」がタッグを組み、IT×コンサルティングで新たな金融プラットフォームを創造。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body">
+      <p>2024年2月設立。「お金の見える化」で支持を得るマネーフォワードと、超富裕層向けファミリーオフィス事業を展開するPrivateBANKが手を組み誕生した画新的ベンチャーです。これまで一部の限られた富裕層にしか提供されていなかったオーダーメイドの資産管理サービスを、テクノロジーの力で民主化し、新たなスタンダードを創造することに挑んでいます。</p>
+      <p>野村證券や三井住友信託銀行、三井住友トラストクラブとの資本業務提携を実現し、強固な基盤を確立。資産総額10億円以上の顧客に対し、金融資産・不動産・プライベートエクイティから、相続・事業承継、教育・健康までを包括的にサポートしています。上場企業のインフラを活用しながらゼロから事業を作れる贅沢な環境です。</p>
+      <p><strong>【代表取締役社長 佐藤 貴之氏】</strong><br>2014年に株式会社PrivateBANKを設立し、日本の超富裕層向けマルチファミリーオフィス事業のパイオニアとして業界を牽引。独自の専門知識と深い顧客理解をもとに、テクノロジーを活用した新しい超富裕層向け金融インフラの構築を熱情を持って推進しています。</p>
+    </div>
+  </div>
+  
+  <div class="job-wrap">
+    <div class="job-header" onclick="toggleJob(this)">
+      <div>
+        <div class="job-title-text">📋 事業開発（アライアンス）</div>
+        <div class="job-preview">アライアンス戦略の立案・実行を中心に、外部パートナーとの協業推進および新規サービス共同開発を主導。</div>
+      </div>
+      <div class="job-icon">▼</div>
+    </div>
+    <div class="job-body">
+      <p><strong>【募集背景・役割】</strong><br>0→1の立ち上げフェーズにおいて、コアバリューである「資産の見える化とコンサルティング」を最大化するため、金融機関や富裕層向けサービス事業者とのアライアンス推進が最重要テーマとなっています。本ポジションではアライアンスを軸に、市場調査やマーケティングなど事業立ち上げ全般の推進をお任せします。</p>
+      
+      <p><strong>【具体的な業務内容】</strong></p>
+      <ul>
+        <li>アライアンス戦略に基づく協業パートナー候補の選定とアプローチの実行</li>
+        <li>各種提案・交渉および契約締結プロセスの推進</li>
+        <li>社内の経営チーム、プロダクトチーム、コンサルティングチームと連携した提携案件の推進・発展</li>
+        <li>案件全体のプロジェクトマネジメント</li>
+        <li>（志向に応じて）アライアンス戦略・スキームの立案、新たなプロダクト/サービスの共同開発推進</li>
+      </ul>
+      
+      <p><strong>【応募資格】</strong></p>
+      <ul>
+        <li><span class="tag tag-must">MUST</span> 事業会社での事業開発（BizDev）、またはアライアンス業務の実務経験（3年以上）</li>
+        <li><span class="tag tag-must">MUST</span> 事業会社・金融機関での法人営業・渉外経験があり、新規事業立ち上げに強い意欲をお持ちの方</li>
+        <li><span class="tag tag-want">WANT</span> 金融業界やFinTech領域における知見・経験</li>
+        <li><span class="tag tag-want">WANT</span> スタートアップもしくは成長フェーズの企業における実務経験</li>
+      </ul>
+      
+      <p><strong>【求める人物像】</strong></p>
+      <ul>
+        <li>AIを活用した富裕層向け資産管理モデルの確立に挑戦し、IPOを目指して共に事業成長させたい方</li>
+        <li>重要情報を扱う立場として、高いコンプライアンス意識と倫理観をお持ちの方</li>
+        <li>高いコミュニケーション力で周囲を巻き込み、スピード感を持ってビジネスを推進できる方</li>
+        <li>合弁会社の本格始動期に参画し、新しいウェルスマネジメントの形を自ら創り上げる醍醐味を感じたい方</li>
+      </ul>
+      <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span></div>
+    </div>
+  </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links">
+    <a class="lbtn" href="https://moneyforwardprivatebank.com/" target="_blank">🏢 企業サイト</a>
+  </div>
+</div></div>
+
+<!-- 3. 株式会社ログラス -->
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">経営戦略/事業開発 Strategy＆Growth</span><span class="badge badge-blue">未上場（大型IPO目標）</span></div>
+  <div class="co-name">株式会社ログラス</div>
+  <div class="co-url"><a href="https://loglass.co.jp/" target="_blank">https://loglass.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区三田3-11-24 国際興業三田第2ビル 9階</td></tr><tr><th>設立</th><td>2019年</td></tr><tr><th>上場区分</th><td>未上場（N-4以前 / 時価総額5000億〜1兆円規模の超大型IPOを目指す）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ HRテクノロジーズオススメPoint</h3>
+    <ul>
+      <li>★時価総額5,000億〜1兆円規模の超大型IPOを目指す最高峰スタートアップフェーズ</li>
+      <li>★2024年7月にシリーズBで70億円調達済み！潤沢な資金によるインオーガニック（M&A）成長も本格化</li>
+      <li>★経営管理クラウド累計導入社数No.1！強力な参入障壁とAI-Nativeな開発環境</li>
+    </ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「良い景気を作ろう。」をミッションに、経営データを一元管理・分析するクラウド経営管理システム「Loglass」を展開する急成長企業。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body">
+      <p>「良い景気を作ろう。」をミッションに掲げ2019年に設立された急成長スタートアップ。企業内に散在する経営データを一元管理・分析するクラウド経営管理システム「Loglass」を提供し、集計工数を99%削減するなど圧倒的な価値を創出。経営管理クラウド累計導入社数No.1を誇り、エンタープライズ企業を中心に導入が進んでいます。</p>
+      <p>単なる業務効率化にとどまらず、AIを活用してCFOの参謀となる「経営の高度化」を実現。マルチプロダクト化やM&Aを「経営の最重要オプション」と位置づけた事業拡大を進め、日本の労働生産性向上と企業価値向上を牽引しています。</p>
+      <p><strong>【代表取締役 布川 友也氏】</strong><br>慶應義塾大学経済学部卒業後、2016年SMBC日興証券投資銀行部門に入社。PE・総合商社のM&AやIPOアドバイザリー業務に従事。その後GameWith経営戦略室にてIR・投資・経営管理を担当し、2019年に株式会社ログラスを創業。</p>
+    </div>
+  </div>
+  
+  <div class="job-wrap">
+    <div class="job-header" onclick="toggleJob(this)">
+      <div>
+        <div class="job-title-text">📋 経営戦略/事業開発 Strategy＆Growth</div>
+        <div class="job-preview">経営陣直下で3〜5年/5〜10年の中長期成長シナリオを描き、投資テーマ設計やGTM・プロダクト・組織施策への接続をリード。</div>
+      </div>
+      <div class="job-icon">▼</div>
+    </div>
+    <div class="job-body">
+      <p><strong>【募集背景・ミッション】</strong><br>急成長を遂げる中、シリーズC以降の資金調達やマルチプロダクト展開、本格的なエンタープライズ浸透を見据え、3〜5年・5〜10年スパンでの「会社の絵」を具体化することが急務です。経営陣の最も近くで、中長期の姿から逆算して今打つべき手を設計するストラテジックプランニング担当を募集します。</p>
+      
+      <p><strong>【具体的な業務内容】</strong></p>
+      <ul>
+        <li><strong>中長期シナリオプランニング：</strong>市場構造把握、マクロ環境・AIトレンドを踏まえた複数成長シナリオの構築、PL/BS/CF/人員規模シミュレーション設計</li>
+        <li><strong>中期経営計画・事業計画設計：</strong>3〜5年中計骨子設計、四半期/年度計画とのギャップ分析、投資テーマの優先順位付け</li>
+        <li><strong>財務・KPIモデリング・資本政策：</strong>ARR/LTV/CAC等を組み込んだ財務モデル構築、エクイティストーリー検討支援</li>
+        <li><strong>経営アジェンダ整理：</strong>取締役会・経営会議インプット資料作成、事業企画・GTM・プロダクト側への論点落とし込み</li>
+      </ul>
+      
+      <p><strong>【応募資格】</strong> ※いずれか1つ以上を満たす方</p>
+      <ul>
+        <li><span class="tag tag-must">MUST</span> 事業会社での経営企画/コーポレートストラテジー/事業企画経験（5年以上目安、中長期計画・財務モデリング経験）</li>
+        <li><span class="tag tag-must">MUST</span> 戦略/総合コンサルファーム等でのコンサルタント経験（3年以上、成長戦略立案＋事業会社側での実行フェーズコミット経験）</li>
+        <li><span class="tag tag-must">MUST</span> VC/PE/CVC/投資銀行等での投資・アドバイザリー経験（3年以上、DD・バリュエーション＋中期計画検討経験）</li>
+        <li><span class="tag tag-want">WANT</span> B2B SaaS・サブスクリプション事業での実務経験、SaaS指標を用いた事業計画経験</li>
+        <li><span class="tag tag-want">WANT</span> FP&A/EPM/経営管理・会計領域の知見、スタートアップでの資金調達・上場準備経験</li>
+      </ul>
+      
+      <p><strong>【求める人物像】</strong></p>
+      <ul>
+        <li>事業の成長に合わせて自分に必要な知識/スキル/マインドを継続的にアップデートできる方</li>
+        <li>大きな課題にぶつかっても冷静に現状を見つめ、愚直に行動ができる方</li>
+        <li>常に謙虚さを忘れず、お客様やチームメイトに最大限の敬意を払える方</li>
+      </ul>
+      <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">⚠️ 副業：条件によって可</span></div>
+    </div>
+  </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links">
+    <a class="lbtn" href="https://loglass.co.jp/" target="_blank">🏢 企業サイト</a>
+    <a class="lbtn lbtn-out" href="https://note.com/loglass_sakamoto/n/n2aaea5974077" target="_blank">📝 プロダクトビジョン (note)</a>
+  </div>
+</div></div>
+
+</main>
+<footer>
+  <p>本資料はHRテクノロジーズが山下百優 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社HRテクノロジーズ</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
